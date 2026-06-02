@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Theres-a-Chance - Repositório.slnx"
+    "dotnet.defaultSolution": "Theres-a-Chance---Jogo.slnx"
 }
