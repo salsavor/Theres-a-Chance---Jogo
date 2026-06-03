@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     public CharacterController characterController;
     public Transform cameraTransform; // Referência à câmara principal
-    public bool grounded = false;
-    public static Animator myAnimation;
+
+    private Animator animator;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
 
-        myAnimation = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         // Se não for arrastada no Inspector, tentamos encontrá-la automaticamente
         if (cameraTransform == null)
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
             float velocidadeAtual = velocidadeHorizontal.magnitude;
 
             // Passa esse valor para o parâmetro "speed" do teu Animator
-            myAnimation.SetFloat("speed", velocidadeAtual);
+            animator.SetFloat("speed", velocidadeAtual);
         }
 
     }
