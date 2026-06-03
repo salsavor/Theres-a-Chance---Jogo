@@ -12,7 +12,7 @@ public class Respawn : MonoBehaviour
         {
             HealthPlayer.life -= 1; // remove 1 vida ao Player
             player.transform.position = respawnPoint.transform.position; // move o Player para o respawnPoint
-            player.playerigidbody3D.linearVelocity = Vector3.zero; // reset da velocidade do Rigidbody
+            player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero; // reset da velocidade do Rigidbody
             if (collide != null) collide.Play(); // reproduz o som de colisão
         }
     }
