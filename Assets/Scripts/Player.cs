@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         // dampTime suaviza a mudança do parâmetro → blend fluido entre Idle/Walk/Run
         animator.SetFloat("speed", velocidadeAtual, animDampTime, Time.deltaTime);
 
-        animator.SetBool("isRunning", isRunning);
+       
 
         // groundedTimer evita que jump ative em terreno irregular
         animator.SetBool("jump", groundedTimer <= 0f);
