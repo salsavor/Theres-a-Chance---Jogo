@@ -7,12 +7,23 @@ public class Player : MonoBehaviour
     public float gravity = 20.0f;
     private Vector3 moveDirection = Vector3.zero;
     public CharacterController characterController;
-    public Transform cameraTransform; // referência à câmara principal
+    public Transform cameraTransform;
 
-    [SerializeField] private float mouseSensitivity = 2.0f; // sensibilidade do rato, editável no inspector
-    [SerializeField] private float verticalClampMin = -60f; // limite mínimo de rotação vertical da câmara
-    [SerializeField] private float verticalClampMax = 60f;  // limite máximo de rotação vertical da câmara
-    private float verticalRotation = 0f; // valor acumulado da rotação vertical da câmara
+    [SerializeField] private float mouseSensitivity = 2.0f;
+    [SerializeField] private float verticalClampMin = -60f;
+    [SerializeField] private float verticalClampMax = 60f;
+    private float verticalRotation = 0f;
+
+    [SerializeField] private float runSpeed = 12.0f;
+    [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
+    private bool isRunning = false;
+
+    private bool canDoubleJump = false;
+
+    private float groundedTimer = 0f;
+    private float groundedBuffer = 0.15f;
+
+    [SerializeField] private float animDampTime = 0.1f; // suavização do blend de animações
 
     private Animator animator;
 
@@ -21,75 +32,105 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-        // se não for arrastada no inspector, encontra automaticamente
         if (cameraTransform == null)
             cameraTransform = Camera.main.transform;
 
-        Cursor.lockState = CursorLockMode.Locked; // esconde e bloqueia o cursor no centro do ecrã
-        Cursor.visible = false; // torna o cursor invisível
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
-        HandleCameraRotation(); // chama a função de rotação da câmara
+        HandleCameraRotation();
+        HandleRun();
+        HandleMovement();
+        AtualizarAnimacoes();
+    }
+
+    private void HandleMovement()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredDirection = (forward * vertical + right * horizontal).normalized;
+        float currentSpeed = isRunning ? runSpeed : speed;
+
+        // Timer usado APENAS para as animações
+        if (characterController.isGrounded)
+            groundedTimer = groundedBuffer;
+        else
+            groundedTimer -= Time.deltaTime;
 
         if (characterController.isGrounded)
         {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            moveDirection = desiredDirection * currentSpeed;
+            moveDirection.y = -2f; // força constante para baixo — cola ao terreno
 
-            // direção base no espaço da câmara
-            Vector3 forward = cameraTransform.forward;
-            Vector3 right = cameraTransform.right;
-
-            // ignorar rotação vertical da câmara
-            forward.y = 0f;
-            right.y = 0f;
-            forward.Normalize();
-            right.Normalize();
-
-            // direção final com base no input e orientação da câmara
-            Vector3 desiredDirection = (forward * vertical + right * horizontal).normalized;
-            moveDirection = desiredDirection * speed;
-
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
+            {
                 moveDirection.y = jumpSpeed;
+                canDoubleJump = true;
+                groundedTimer = 0f; // dispara a animação de jump imediatamente
+            }
+        }
+        else
+        {
+            Vector3 horizontalMovement = desiredDirection * currentSpeed;
+            moveDirection.x = horizontalMovement.x;
+            moveDirection.z = horizontalMovement.z;
+
+            if (Input.GetButtonDown("Jump") && canDoubleJump)
+            {
+                moveDirection.y = jumpSpeed;
+                canDoubleJump = false;
+                groundedTimer = 0f; // garante que a animação continua em jump
+            }
         }
 
-        // aplicar gravidade
         moveDirection.y -= gravity * Time.deltaTime;
-
-        // mover personagem
         characterController.Move(moveDirection * Time.deltaTime);
+    }
 
-        AtualizarAnimacoes();
+    private void HandleRun()
+    {
+        if (Input.GetKey(runKey))
+            isRunning = true;
+        else
+            isRunning = false;
     }
 
     private void HandleCameraRotation()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity; // movimento horizontal do rato
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity; // movimento vertical do rato
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // roda o player no eixo Y com o movimento horizontal do rato
         transform.Rotate(Vector3.up * mouseX);
 
-        // acumula a rotação vertical e limita entre o mínimo e máximo definidos
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, verticalClampMin, verticalClampMax);
 
-        // aplica a rotação vertical apenas à câmara
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 
     void AtualizarAnimacoes()
     {
-        // cria um vetor horizontal (apenas X e Z) para saber a velocidade real de movimento
         Vector3 velocidadeHorizontal = new Vector3(characterController.velocity.x, 0, characterController.velocity.z);
-
-        // magnitude dá o comprimento do vetor (0, 3.5, 6.0, etc.)
         float velocidadeAtual = velocidadeHorizontal.magnitude;
 
-        // passa o valor para o parâmetro speed do Animator
-        animator.SetFloat("speed", velocidadeAtual);
+        // dampTime suaviza a mudança do parâmetro → blend fluido entre Idle/Walk/Run
+        animator.SetFloat("speed", velocidadeAtual, animDampTime, Time.deltaTime);
+
+        animator.SetBool("isRunning", isRunning);
+
+        // groundedTimer evita que jump ative em terreno irregular
+        animator.SetBool("jump", groundedTimer <= 0f);
     }
 }
