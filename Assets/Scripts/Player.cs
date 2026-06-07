@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +27,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float animDampTime = 0.1f; // suavização do blend de animações
 
     private Animator animator;
+
+    public float Stamina = 100f;
+    public float MaxStamina = 100f; 
+    public float RunCost = 15f; // custo de correr 
+    public float RegenRate = 10f; // regeneração/p segundo
+    public float RegenDelay = 1.5f; // tempo ate começar a regenerar 
+    private float regenTimer = 0f;  // timer para controlar o delay de regeneração
+    
+    public Image StaminaBar;
+
 
     void Start()
     {
@@ -99,13 +110,49 @@ public class Player : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    private void HandleRun()
+   private void HandleRun()
+{
+    bool wantsToRun = Input.GetKey(runKey);
+    bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
+
+    if (wantsToRun && isMoving && Stamina > 0f)
     {
-        if (Input.GetKey(runKey))
-            isRunning = true;
-        else
-            isRunning = false;
+        isRunning = true;
+        Stamina -= RunCost * Time.deltaTime;
+        Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+        regenTimer = 0f; // reset do delay de regen
     }
+    else
+    {
+        isRunning = false;
+
+        //  delay
+        regenTimer += Time.deltaTime;
+        if (regenTimer >= RegenDelay && Stamina < MaxStamina)
+        {
+            Stamina += RegenRate * Time.deltaTime;
+            Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+        }
+    }
+
+    UpdateStaminaBar();
+}
+
+    private void UpdateStaminaBar()
+    {
+        if (StaminaBar == null) return;
+
+        StaminaBar.fillAmount = Stamina / MaxStamina;
+
+        // muda de  cor com a stamina verde para amarelo para vermelho :D
+        if (Stamina / MaxStamina > 0.5f)
+            StaminaBar.color = Color.green;
+        else if (Stamina / MaxStamina > 0.25f)
+            StaminaBar.color = Color.yellow;
+        else
+            StaminaBar.color = Color.red;
+    }
+
 
     private void HandleCameraRotation()
     {
