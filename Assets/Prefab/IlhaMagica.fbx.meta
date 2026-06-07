@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BrownMush.001
+    second: {fileID: 2100000, guid: 75f71d5e8ee39a044832509dadceb912, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material #61 Slot #5
     second: {fileID: 2100000, guid: 479728a6c6ca4f94192279d0af47ddc6, type: 2}
   - first:
@@ -42,6 +47,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Water.001
+    second: {fileID: 2100000, guid: acb1773e4bab06a46a0b7f73f3e88e66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: YellowMush
     second: {fileID: 2100000, guid: d029e238fedff3e45b54ed68268ab9c6, type: 2}
   - first:
@@ -67,8 +77,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: blinn1
-    second: {fileID: 2100000, guid: 1d6793e7526faef47a7713bf7d00651b, type: 2}
+      name: black
+    second: {fileID: 2100000, guid: e081af1969b3c5449a8c4fd3951a7cf8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -79,6 +89,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: cam
     second: {fileID: 2100000, guid: 10499da84866c3247b5578884ff5db34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cam.001
+    second: {fileID: 2100000, guid: 344fd110e24e8af40b3885fd98ac2b1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cam.002
+    second: {fileID: 2100000, guid: 5c9ba930c0146424286e1c04cf54509e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -142,6 +162,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: iksir.001
+    second: {fileID: 2100000, guid: 4e4d7b6bbb3a37842a9c9ea19492d569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iksir.002
+    second: {fileID: 2100000, guid: 71805d73c5b44184eaacfdbd2296ae38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_stone.001
+    second: {fileID: 2100000, guid: 6e611d76321b96d45aabd241e8bb6f52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: metal
     second: {fileID: 2100000, guid: d8436ce48851f6e408007a56442ad149, type: 2}
   - first:
@@ -149,6 +184,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: metal.001
     second: {fileID: 2100000, guid: 75991bb7aa4a85f459377005b14f68c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.002
+    second: {fileID: 2100000, guid: 2f1cb5294a8cda049a01993cb26b5c22, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -177,8 +217,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: rocks.001
-    second: {fileID: 2100000, guid: 91bb903d0fe097e4b8b86d77ad71b10a, type: 2}
+      name: rocks.002
+    second: {fileID: 2100000, guid: da80893f115052d439afe5829702ac58, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -209,6 +249,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: "t\u0131pa"
     second: {fileID: 2100000, guid: f2a76b056587c0541931c80a004e4306, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "t\u0131pa.001"
+    second: {fileID: 2100000, guid: af97d68ddc118164c8e88f1fc1a33a6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "t\u0131pa.002"
+    second: {fileID: 2100000, guid: d97a1ac023d8fa149b41846e50eb8fd3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
