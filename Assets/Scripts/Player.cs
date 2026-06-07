@@ -100,9 +100,21 @@ public class Player : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && canDoubleJump)
             {
-                moveDirection.y = jumpSpeed;
-                canDoubleJump = false;
-                groundedTimer = 0f; // garante que a animação continua em jump
+
+                // ve a stamina 
+                    if (Stamina >= MaxStamina * 0.25f)
+                    {
+                        moveDirection.y = jumpSpeed;
+                        canDoubleJump = false;
+                        groundedTimer = 0f;
+
+                        // usa 25% da stamina para o double jumpp
+                        Stamina -= MaxStamina * 0.25f;
+                        Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+                        regenTimer = 0f; // reset do delay de regen
+                        UpdateStaminaBar();
+                    }
+                
             }
         }
 
