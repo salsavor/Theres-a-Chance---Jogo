@@ -66,7 +66,7 @@ public class ControladorInimigo : MonoBehaviour
 
             // contacto: ao tocar no player, tira-lhe uma vida
             float distancia = Vector3.Distance(transform.position, player.position);
-            if (distancia <= alcanceContacto && Time.time >= tempoUltimoContacto + intervaloContacto)
+            if (distancia <=    alcanceContacto && Time.time >= tempoUltimoContacto + intervaloContacto)
             {
                 VidaPlayer vida = player.GetComponent<VidaPlayer>();
                 if (vida != null)

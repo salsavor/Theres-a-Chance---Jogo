@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
+    [SerializeField] private float doubleJumpCost = 25f; // custo de stamina para double jump
     private bool isRunning = false;
 
     private bool canDoubleJump = false;
@@ -30,10 +31,10 @@ public class Player : MonoBehaviour
 
     public float Stamina = 100f;
     public float MaxStamina = 100f; 
-    public float RunCost = 15f; // custo de correr 
+    public float RunCost = 10f; // custo de correr 
     public float RegenRate = 10f; // regeneração/p segundo
     public float RegenDelay = 1.5f; // tempo ate começar a regenerar 
-    private float regenTimer = 0f;  // timer para controlar o delay de regeneração
+    private float regenTimer = 0f;  // timer ate voltar a regenerar, tipo corre > gasta stamina > para de correr > espera o delay > começa a regenerar, mas se gastar de novo reseta o timer
     
     public Image StaminaBar;
 
@@ -102,14 +103,14 @@ public class Player : MonoBehaviour
             {
 
                 // ve a stamina 
-                    if (Stamina >= MaxStamina * 0.25f)
+                    if (Stamina >= doubleJumpCost)
                     {
                         moveDirection.y = jumpSpeed;
                         canDoubleJump = false;
                         groundedTimer = 0f;
 
                         // usa 25% da stamina para o double jumpp
-                        Stamina -= MaxStamina * 0.25f;
+                        Stamina -= doubleJumpCost;
                         Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
                         regenTimer = 0f; // reset do delay de regen
                         UpdateStaminaBar();
@@ -190,6 +191,8 @@ public class Player : MonoBehaviour
        
 
         // groundedTimer evita que jump ative em terreno irregular
-        animator.SetBool("jump", groundedTimer <= 0f);
+        animator.SetBool("jump", !characterController.isGrounded);
     }
+
+    
 }
