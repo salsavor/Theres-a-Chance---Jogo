@@ -9,10 +9,33 @@ public class VidaPlayer : MonoBehaviour
     private int vidasAtuais;                                // vidas atuais
     private CharacterController characterController;
 
+    [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
+    [SerializeField] private Transform colliderIlhaFora;
+
     void Start()
     {
         vidasAtuais = vidasMaximas;
         characterController = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        // tecla de respawn manual (para testes)
+        if (Input.GetKeyDown(respawnKey))
+        {
+            Debug.Log("Respawn manual ativado.");
+            PerderVida();
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform == colliderIlhaFora)
+        {
+            Debug.Log("Colidiu com ilha fora dos limites.");
+            PerderVida();
+        }
     }
 
     // chamado pelo inimigo quando toca no player
