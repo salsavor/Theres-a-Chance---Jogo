@@ -10,14 +10,11 @@ public class Player : MonoBehaviour
     public CharacterController characterController;
     public Transform cameraTransform;
 
-    [SerializeField] private float mouseSensitivity = 2.0f;
-    [SerializeField] private float verticalClampMin = -60f;
-    [SerializeField] private float verticalClampMax = 60f;
-    private float verticalRotation = 0f;
+    [SerializeField] private float rotationSpeed = 10f; // rapidez a virar para o movimento
 
     [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
-    [SerializeField] private float doubleJumpCost = 25f; // custo de stamina para double jump
+    [SerializeField] private float doubleJumpCost = 25f;
     private bool isRunning = false;
 
     private bool canDoubleJump = false;
@@ -25,19 +22,18 @@ public class Player : MonoBehaviour
     private float groundedTimer = 0f;
     private float groundedBuffer = 0.15f;
 
-    [SerializeField] private float animDampTime = 0.1f; // suavização do blend de animações
+    [SerializeField] private float animDampTime = 0.1f;
 
     private Animator animator;
 
     public float Stamina = 100f;
-    public float MaxStamina = 100f; 
-    public float RunCost = 10f; // custo de correr 
-    public float RegenRate = 10f; // regeneração/p segundo
-    public float RegenDelay = 1.5f; // tempo ate começar a regenerar 
-    private float regenTimer = 0f;  // timer ate voltar a regenerar, tipo corre > gasta stamina > para de correr > espera o delay > começa a regenerar, mas se gastar de novo reseta o timer
-    
-    public Image StaminaBar;
+    public float MaxStamina = 100f;
+    public float RunCost = 10f;
+    public float RegenRate = 10f;
+    public float RegenDelay = 1.5f;
+    private float regenTimer = 0f;
 
+    public Image StaminaBar;
 
     void Start()
     {
@@ -53,7 +49,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        HandleCameraRotation();
         HandleRun();
         HandleMovement();
         AtualizarAnimacoes();
@@ -75,7 +70,13 @@ public class Player : MonoBehaviour
         Vector3 desiredDirection = (forward * vertical + right * horizontal).normalized;
         float currentSpeed = isRunning ? runSpeed : speed;
 
-        // Timer usado APENAS para as animações
+        // roda o player para a direção do movimento
+        if (desiredDirection.sqrMagnitude > 0.01f)
+        {
+            Quaternion rotacaoAlvo = Quaternion.LookRotation(desiredDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotacaoAlvo, Time.deltaTime * rotationSpeed);
+        }
+
         if (characterController.isGrounded)
             groundedTimer = groundedBuffer;
         else
@@ -84,13 +85,13 @@ public class Player : MonoBehaviour
         if (characterController.isGrounded)
         {
             moveDirection = desiredDirection * currentSpeed;
-            moveDirection.y = -2f; // força constante para baixo — cola ao terreno
+            moveDirection.y = -2f;
 
             if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpSpeed;
                 canDoubleJump = true;
-                groundedTimer = 0f; // dispara a animação de jump imediatamente
+                groundedTimer = 0f;
             }
         }
         else
@@ -101,21 +102,17 @@ public class Player : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && canDoubleJump)
             {
+                if (Stamina >= doubleJumpCost)
+                {
+                    moveDirection.y = jumpSpeed;
+                    canDoubleJump = false;
+                    groundedTimer = 0f;
 
-                // ve a stamina 
-                    if (Stamina >= doubleJumpCost)
-                    {
-                        moveDirection.y = jumpSpeed;
-                        canDoubleJump = false;
-                        groundedTimer = 0f;
-
-                        // usa 25% da stamina para o double jumpp
-                        Stamina -= doubleJumpCost;
-                        Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
-                        regenTimer = 0f; // reset do delay de regen
-                        UpdateStaminaBar();
-                    }
-                
+                    Stamina -= doubleJumpCost;
+                    Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+                    regenTimer = 0f;
+                    UpdateStaminaBar();
+                }
             }
         }
 
@@ -123,33 +120,32 @@ public class Player : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-   private void HandleRun()
-{
-    bool wantsToRun = Input.GetKey(runKey);
-    bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
-
-    if (wantsToRun && isMoving && Stamina > 0f)
+    private void HandleRun()
     {
-        isRunning = true;
-        Stamina -= RunCost * Time.deltaTime;
-        Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
-        regenTimer = 0f; // reset do delay de regen
-    }
-    else
-    {
-        isRunning = false;
+        bool wantsToRun = Input.GetKey(runKey);
+        bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
 
-        //  delay
-        regenTimer += Time.deltaTime;
-        if (regenTimer >= RegenDelay && Stamina < MaxStamina)
+        if (wantsToRun && isMoving && Stamina > 0f)
         {
-            Stamina += RegenRate * Time.deltaTime;
+            isRunning = true;
+            Stamina -= RunCost * Time.deltaTime;
             Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+            regenTimer = 0f;
         }
-    }
+        else
+        {
+            isRunning = false;
 
-    UpdateStaminaBar();
-}
+            regenTimer += Time.deltaTime;
+            if (regenTimer >= RegenDelay && Stamina < MaxStamina)
+            {
+                Stamina += RegenRate * Time.deltaTime;
+                Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+            }
+        }
+
+        UpdateStaminaBar();
+    }
 
     private void UpdateStaminaBar()
     {
@@ -157,7 +153,6 @@ public class Player : MonoBehaviour
 
         StaminaBar.fillAmount = Stamina / MaxStamina;
 
-        // muda de  cor com a stamina verde para amarelo para vermelho :D
         if (Stamina / MaxStamina > 0.5f)
             StaminaBar.color = Color.green;
         else if (Stamina / MaxStamina > 0.25f)
@@ -166,33 +161,12 @@ public class Player : MonoBehaviour
             StaminaBar.color = Color.red;
     }
 
-
-    private void HandleCameraRotation()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        transform.Rotate(Vector3.up * mouseX);
-
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, verticalClampMin, verticalClampMax);
-
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-    }
-
     void AtualizarAnimacoes()
     {
         Vector3 velocidadeHorizontal = new Vector3(characterController.velocity.x, 0, characterController.velocity.z);
         float velocidadeAtual = velocidadeHorizontal.magnitude;
 
-        // dampTime suaviza a mudança do parâmetro → blend fluido entre Idle/Walk/Run
         animator.SetFloat("speed", velocidadeAtual, animDampTime, Time.deltaTime);
-
-       
-
-        // groundedTimer evita que jump ative em terreno irregular
         animator.SetBool("jump", !characterController.isGrounded);
     }
-
-    
 }
