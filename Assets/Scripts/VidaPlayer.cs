@@ -10,7 +10,7 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private Transform checkpointDesafio;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
 
-    private static int vidasAtuais;                         // vidas atuais
+    public static int vidasAtuais;                         // vidas atuais
     private CharacterController characterController;
 
     [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
