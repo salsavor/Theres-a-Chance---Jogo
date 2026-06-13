@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class VidaPlayer : MonoBehaviour
 {
-    [SerializeField] private int vidasMaximas = 3;          // total de vidas
+
+    [SerializeField] private GameObject life1, life2, life3;
+    
     [SerializeField] private Transform checkpointDesafio;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
 
-    private int vidasAtuais;                                // vidas atuais
+    private static int vidasAtuais;                         // vidas atuais
     private CharacterController characterController;
 
     [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
@@ -14,12 +18,47 @@ public class VidaPlayer : MonoBehaviour
 
     void Start()
     {
-        vidasAtuais = vidasMaximas;
+        vidasAtuais = 3;
+        life1.gameObject.SetActive(true);
+        life2.gameObject.SetActive(true);
+        life3.gameObject.SetActive(true);
         characterController = GetComponent<CharacterController>();
     }
 
+   private void saude()
+    {
+        switch (vidasAtuais)
+        {
+            case 3:
+                life1.gameObject.SetActive(true);
+                life2.gameObject.SetActive(true);
+                life3.gameObject.SetActive(true);
+                Debug.Log("Vida: " + vidasAtuais);
+                break;
+            case 2:
+                life1.gameObject.SetActive(true);
+                life2.gameObject.SetActive(true);
+                life3.gameObject.SetActive(false);
+                Debug.Log("Vida: " + vidasAtuais);
+                break;
+            case 1:
+                life1.gameObject.SetActive(true);
+                life2.gameObject.SetActive(false);
+                life3.gameObject.SetActive(false);
+                Debug.Log("Vida: " + vidasAtuais);
+                break;
+            case 0:
+                life1.gameObject.SetActive(true);
+                life2.gameObject.SetActive(false);
+                life3.gameObject.SetActive(false);
+                break;
+        }
+    }
+
+
     void Update()
     {
+        saude();
         // tecla de respawn manual (para testes)
         if (Input.GetKeyDown(respawnKey))
         {
@@ -48,11 +87,16 @@ public class VidaPlayer : MonoBehaviour
         {
             // ainda tem vidas → volta ao checkpoint do desafio
             Teletransportar(checkpointDesafio);
+            Player.Stamina = Player.MaxStamina; // restaura a stamina
         }
         else
         {
             // sem vidas → reinicia as vidas e volta ao inicio do nivel
-            vidasAtuais = vidasMaximas;
+            vidasAtuais = 3;
+            life1.gameObject.SetActive(true);
+            life2.gameObject.SetActive(true);
+            life3.gameObject.SetActive(true);
+            Player.Stamina = Player.MaxStamina; // restaura a stamina
             Teletransportar(respawnInicial);
             Debug.Log("Sem vidas — de volta ao inicio do nivel.");
         }

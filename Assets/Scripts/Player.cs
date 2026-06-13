@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
-    public float Stamina = 100f;
-    public float MaxStamina = 100f;
+    public static float Stamina = 100f;
+    public static float MaxStamina = 100f;
     public float RunCost = 10f;
     public float RegenRate = 10f;
     public float RegenDelay = 1.5f;

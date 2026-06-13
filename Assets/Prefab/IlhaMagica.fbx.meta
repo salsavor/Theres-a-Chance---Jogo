@@ -22,13 +22,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #62
-    second: {fileID: 2100000, guid: 03e15adbff5124944b2e5e2a52a83cbd, type: 2}
+      name: Material #61 Slot #8
+    second: {fileID: 2100000, guid: ab79b57c897cad644b159ab3f4ebe462, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #63
-    second: {fileID: 2100000, guid: 3c7442cb05e34db4abeddc5edd89eb85, type: 2}
+      name: Material #62
+    second: {fileID: 2100000, guid: 03e15adbff5124944b2e5e2a52a83cbd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
