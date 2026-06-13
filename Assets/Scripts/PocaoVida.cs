@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             if (VidaPlayer.vidasAtuais < 3)
             {
