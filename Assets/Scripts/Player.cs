@@ -4,16 +4,16 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 6.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
+    public static float speed = 6.0f;
+    public static float jumpSpeed = 8.0f;
+    public static float gravity = 20.0f;
     private Vector3 moveDirection = Vector3.zero;
     public CharacterController characterController;
     public Transform cameraTransform;
 
     [SerializeField] private float rotationSpeed = 10f; // rapidez a virar para o movimento
 
-    [SerializeField] private float runSpeed = 12.0f;
+    [SerializeField] public static float runSpeed = 12.0f;
     [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
     [SerializeField] private float doubleJumpCost = 25f;
     private bool isRunning = false;
