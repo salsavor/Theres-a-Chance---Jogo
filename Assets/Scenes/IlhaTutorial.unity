@@ -2483,6 +2483,11 @@ MonoBehaviour:
   sensibilidade: 3
   pitchMin: -30
   pitchMax: 70
+  distanciaMinima: 0.5
+  offsetColisao: 0.2
+  camaraColide:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1099172192
 MonoBehaviour:
   m_ObjectHideFlags: 0
