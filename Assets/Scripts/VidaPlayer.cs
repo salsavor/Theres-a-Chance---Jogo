@@ -7,14 +7,13 @@ public class VidaPlayer : MonoBehaviour
 
     [SerializeField] private GameObject life1, life2, life3;
     
-    [SerializeField] private Transform checkpointDesafio;   // volta aqui ao perder uma vida
+    [SerializeField] public static Transform checkpointDesafio = null;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
 
     public static int vidasAtuais;                         // vidas atuais
     private CharacterController characterController;
 
     [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
-    [SerializeField] private Transform colliderIlhaFora;
 
     void Start()
     {
@@ -67,16 +66,6 @@ public class VidaPlayer : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform == colliderIlhaFora)
-        {
-            Debug.Log("Colidiu com ilha fora dos limites.");
-            PerderVida();
-        }
-    }
-
     // chamado pelo inimigo quando toca no player
     public void PerderVida()
     {
@@ -86,7 +75,16 @@ public class VidaPlayer : MonoBehaviour
         if (vidasAtuais > 0)
         {
             // ainda tem vidas → volta ao checkpoint do desafio
-            Teletransportar(checkpointDesafio);
+            if (checkpointDesafio == null)
+            {
+                Debug.LogWarning("Checkpoint do desafio nao definido. Teletransportando para o respawn inicial.");
+                Teletransportar(respawnInicial);
+            }
+            else
+            {
+                Debug.Log("Teletransportando para o checkpoint do desafio.");
+                Teletransportar(checkpointDesafio);
+            }
             Player.Stamina = Player.MaxStamina; // restaura a stamina
         }
         else
@@ -99,6 +97,7 @@ public class VidaPlayer : MonoBehaviour
             Player.Stamina = Player.MaxStamina; // restaura a stamina
             Teletransportar(respawnInicial);
             Debug.Log("Sem vidas — de volta ao inicio do nivel.");
+            checkpointDesafio = null; // reseta o checkpoint para o inicio do nivel
         }
     }
 
