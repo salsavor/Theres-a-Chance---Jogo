@@ -6,10 +6,10 @@ public class VidaPlayer : MonoBehaviour
 {
 
     [SerializeField] private GameObject life1, life2, life3;
-    
+
     [SerializeField] public static Transform checkpointDesafio = null;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
-    
+
     public static int vidasAtuais;                         // vidas atuais
     private CharacterController characterController;
 
@@ -22,9 +22,10 @@ public class VidaPlayer : MonoBehaviour
         life2.gameObject.SetActive(true);
         life3.gameObject.SetActive(true);
         characterController = GetComponent<CharacterController>();
+
     }
 
-   private void saude()
+    private void saude()
     {
         switch (vidasAtuais)
         {
@@ -89,16 +90,28 @@ public class VidaPlayer : MonoBehaviour
         }
         else
         {
-            // sem vidas → reinicia as vidas e volta ao inicio do nivel
+            // sem vidas ent reinicia as vidas e volta ao inicio do nivel
             vidasAtuais = 3;
             life1.gameObject.SetActive(true);
             life2.gameObject.SetActive(true);
             life3.gameObject.SetActive(true);
-            Player.Stamina = Player.MaxStamina; // restaura a stamina
+            Player.Stamina = Player.MaxStamina; // restaura stamina
             Teletransportar(respawnInicial);
             Debug.Log("Sem vidas — de volta ao inicio do nivel.");
-            checkpointDesafio = null; // reseta o checkpoint para o inicio do nivel
+            checkpointDesafio = null; // reseta o checkpoint para null
+            ReativarPocoes();
         }
+    }
+
+    private void ReativarPocoes()
+    {
+        PocaoVelo[] pocoesVelo = FindObjectsByType<PocaoVelo>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (PocaoVelo pocao in pocoesVelo)
+            pocao.gameObject.SetActive(true);
+
+        PocaoVida[] pocoesVida = FindObjectsByType<PocaoVida>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (PocaoVida pocao in pocoesVida)
+            pocao.gameObject.SetActive(true);
     }
 
     private void Teletransportar(Transform destino)

@@ -2,36 +2,37 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private Transform playerOnPlatform = null;
     private Vector3 lastPosition;
+    private CharacterController playerCC;
+    private Transform player;
+    [SerializeField] private LayerMask plataformaLayer;
 
     void Start()
     {
         lastPosition = transform.position;
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            playerCC = playerObj.GetComponent<CharacterController>();
+        }
     }
 
     void LateUpdate()
     {
-        if (playerOnPlatform != null)
+        if (player == null || playerCC == null) return;
+
+        Ray ray = new Ray(player.position + Vector3.up * 1f, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hit, 4f, plataformaLayer))
         {
-            // Calcula quanto a plataforma se moveu neste frame
-            Vector3 delta = transform.position - lastPosition;
-            // Aplica esse mesmo movimento ao jogador
-            playerOnPlatform.GetComponent<CharacterController>().Move(delta);
+            if (hit.transform == transform)
+            {
+                Vector3 delta = transform.position - lastPosition;
+                playerCC.Move(delta);
+            }
         }
 
         lastPosition = transform.position;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            playerOnPlatform = other.transform;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            playerOnPlatform = null;
     }
 }

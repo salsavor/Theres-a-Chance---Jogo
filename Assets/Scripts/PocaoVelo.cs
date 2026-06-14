@@ -22,8 +22,7 @@ public class PocaoVelo : MonoBehaviour
             Invoke("ReverterEfeito", duracao);
 
             // esconde a poção mas não destrói ainda
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
+            gameObject.SetActive(false);
             Debug.Log("Poção de velocidade coletada! Efeito aplicado por " + duracao + " segundos.");
         }
     }
@@ -37,6 +36,5 @@ public class PocaoVelo : MonoBehaviour
         Player.Stamina = 100f;
         Player.MaxStamina = 100f;
         Debug.Log("Efeito da poção de velocidade terminou. Velocidade revertida.");
-        Destroy(gameObject); // agora sim destrói
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour
+public class PocaoVida : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
@@ -9,7 +9,7 @@ public class HealthPickup : MonoBehaviour
             if (VidaPlayer.vidasAtuais < 3)
             {
                 VidaPlayer.vidasAtuais++; // aumenta a vida do jogador
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
