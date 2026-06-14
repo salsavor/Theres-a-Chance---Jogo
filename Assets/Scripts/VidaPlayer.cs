@@ -9,7 +9,7 @@ public class VidaPlayer : MonoBehaviour
     
     [SerializeField] public static Transform checkpointDesafio = null;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
-
+    
     public static int vidasAtuais;                         // vidas atuais
     private CharacterController characterController;
 
