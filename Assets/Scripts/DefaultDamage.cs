@@ -4,10 +4,9 @@ public class DefaultDamage : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            VidaPlayer.vidasAtuais--; // diminui a vida do jogador
-            Destroy(gameObject);
+            other.GetComponent<VidaPlayer>().PerderVida();
         }
     }
 }
