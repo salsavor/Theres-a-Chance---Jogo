@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5790843, g: 0.46391067, b: 0.7075472, a: 0.4627451}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -17661,7 +17661,7 @@ Transform:
   m_GameObject: {fileID: 3928493326871952547}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 17.4, y: 52.539, z: 107.375}
+  m_LocalPosition: {x: -23, y: 52.539, z: 104.45}
   m_LocalScale: {x: 52.484123, y: 52.484123, z: 52.484123}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25433,7 +25433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374f622e3978b344986f89e12f067dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nomeScene: IlhaMain
+  nomeScene: IlhaInferno
   colecionaveisNecessarios: 2
 --- !u!4 &6892848356699640695
 Transform:
@@ -27238,8 +27238,8 @@ Transform:
   m_GameObject: {fileID: 7991039748226366415}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -24.9417, y: 17.618, z: 44.348656}
-  m_LocalScale: {x: 20.937784, y: 20.937784, z: 20.937784}
+  m_LocalPosition: {x: -24.973, y: 17.661, z: 44.307}
+  m_LocalScale: {x: 11.31436, y: 11.31436, z: 11.31436}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

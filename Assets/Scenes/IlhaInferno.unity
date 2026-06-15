@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 1, g: 0.48914108, b: 0.43867922, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.002
   m_LinearFogStart: 0
@@ -38577,13 +38577,25 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: d58ce19e1a800114ebafa24d2736e721, type: 3}
+--- !u!114 &1664760723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664760718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a000e50077ee74a4fa0c73c4cc3a9a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectible
 --- !u!1 &1666579548
 GameObject:
   m_ObjectHideFlags: 0
@@ -47925,6 +47937,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d58ce19e1a800114ebafa24d2736e721, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1664760722}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d58ce19e1a800114ebafa24d2736e721, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1664760723}
   m_SourcePrefab: {fileID: 100100000, guid: d58ce19e1a800114ebafa24d2736e721, type: 3}
 --- !u!1 &2082539140
 GameObject:
@@ -47968,7 +47983,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2085310108}
   - component: {fileID: 2085310110}
+  - component: {fileID: 2085310112}
   - component: {fileID: 2085310109}
+  - component: {fileID: 2085310111}
   m_Layer: 0
   m_Name: arch.003
   m_TagString: Untagged
@@ -48048,6 +48065,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085310107}
   m_Mesh: {fileID: -1822025327161228178, guid: 63059598e6c044f498d937c4f29a125f, type: 3}
+--- !u!64 &2085310111
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085310107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1822025327161228178, guid: 63059598e6c044f498d937c4f29a125f, type: 3}
+--- !u!114 &2085310112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085310107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374f622e3978b344986f89e12f067dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextLevel
+  nomeScene: IlhaMain
+  colecionaveisNecessarios: 1
 --- !u!1 &2085676545
 GameObject:
   m_ObjectHideFlags: 0
