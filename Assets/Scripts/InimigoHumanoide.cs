@@ -8,7 +8,7 @@ public class InimigoHumanoide : MonoBehaviour
     [SerializeField] private float raioDetecao = 12f;
     [SerializeField] private float alcanceAtaque = 2.5f;   // distância para começar a atacar
     [SerializeField] private float alcanceDano = 2.5f;     // distância a que o golpe acerta
-    [SerializeField] private float velocidadeCorrer = 4f;
+    [SerializeField] private float velocidadeCorrer = 10f;
     [SerializeField] private float intervaloAtaque = 1.5f;
     [SerializeField] private float tempoAteDano = 1.5f;    // espera antes do dano (deixa a animação tocar)
     [SerializeField] private float toleranciaOrigem = 0.5f;
