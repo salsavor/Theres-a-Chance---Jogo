@@ -170,4 +170,14 @@ public class Player : MonoBehaviour
         animator.SetFloat("speed", velocidadeAtual, animDampTime, Time.deltaTime);
         animator.SetBool("jump", !characterController.isGrounded);
     }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Lava"))
+        {
+            GetComponent<VidaPlayer>().PerderVida();
+        }
+    }
 }
+
+
