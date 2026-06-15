@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Teleporte : MonoBehaviour
+public class NextLevel : MonoBehaviour
 {
     [SerializeField] private string nomeScene;
     [SerializeField] private int colecionaveisNecessarios;
