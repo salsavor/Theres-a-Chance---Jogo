@@ -13,8 +13,8 @@ public class PocaoVida : MonoBehaviour
             {
                 VidaPlayer.vidasAtuais++; // aumenta a vida do jogador
 
-                if (audioSource != null && somRecolha != null)
-                    audioSource.PlayOneShot(somRecolha);
+                if (somRecolha != null)
+                    AudioSource.PlayClipAtPoint(somRecolha, transform.position);
 
                 gameObject.SetActive(false);
             }

@@ -3,16 +3,17 @@ using UnityEngine.UI;
 
 public class DeathCounter : MonoBehaviour
 {
+    public static int deathCount = 0;
+
     private Text textoUI;
 
     void Start()
     {
-        textoUI = GetComponent<Text>();
+        textoUI = GetComponent<Text>(); 
     }
 
     void Update()
     {
-        if (GameManager.instance != null)
-            textoUI.text = GameManager.instance.deathCount.ToString();
+        textoUI.text = deathCount.ToString();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursedObject : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class CursedObject : MonoBehaviour
         {
             VidaPlayer.vidasAtuais -= 2; // diminui a vida do jogador
 
-            if (audioSource != null && somAmaldicoado != null)
-                audioSource.PlayOneShot(somAmaldicoado);
+            if (somAmaldicoado != null)
+                AudioSource.PlayClipAtPoint(somAmaldicoado, transform.position);
 
             Destroy(gameObject);
         }

@@ -20,8 +20,8 @@ public class PocaoVelo : MonoBehaviour
             Player.Stamina = 999999999f;
             Player.MaxStamina = 999999999f;
 
-            if (audioSource != null && somRecolha != null)
-                audioSource.PlayOneShot(somRecolha);
+            if (somRecolha != null)
+                AudioSource.PlayClipAtPoint(somRecolha, transform.position);
 
             Invoke("ReverterEfeito", duracao);
 

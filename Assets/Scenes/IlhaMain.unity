@@ -2839,7 +2839,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8d937f57d2d54504698b8eb735682274, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.55
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2936,7 +2936,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a18599362e0f8514daff55a78a7bbdc5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.55
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10966,11 +10966,11 @@ MonoBehaviour:
   cameraTransform: {fileID: 1019411556}
   rotationSpeed: 10
   runKey: 304
-  doubleJumpCost: 0
+  doubleJumpCost: 12
   animDampTime: 0.15
-  RunCost: 0
+  RunCost: 8
   RegenRate: 10
-  RegenDelay: 1.5
+  RegenDelay: 0.5
   StaminaBar: {fileID: 2055551674}
   audioSource: {fileID: 0}
   walkClip: {fileID: 0}
@@ -16899,7 +16899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickup
   audioSource: {fileID: 0}
-  somRecolha: {fileID: 0}
+  somRecolha: {fileID: 8300000, guid: ee6f5e6e7faeca54eb36a13b1ae158bf, type: 3}
 --- !u!64 &1147736003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27139,7 +27139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c320f115269f6ae49b69bc2823b65512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  deathCount: 0
   colecionaveisAtual: 0
 --- !u!4 &1812523169
 Transform:
@@ -120518,7 +120517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickup
   audioSource: {fileID: 7813055665581446706}
-  somRecolha: {fileID: 0}
+  somRecolha: {fileID: 8300000, guid: ee6f5e6e7faeca54eb36a13b1ae158bf, type: 3}
 --- !u!64 &7813055665581446705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -135260,7 +135259,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 1
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

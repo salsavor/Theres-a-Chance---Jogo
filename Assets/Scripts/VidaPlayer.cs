@@ -100,6 +100,7 @@ public class VidaPlayer : MonoBehaviour
             Debug.Log("Sem vidas — de volta ao inicio do nivel.");
             checkpointDesafio = null; // reseta o checkpoint para null
             ReativarPocoes();
+            DeathCounter.deathCount++;
         }
     }
 

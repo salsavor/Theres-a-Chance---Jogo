@@ -4,8 +4,6 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    public int deathCount = 0;
     
     public int colecionaveisAtual = 0;
 
