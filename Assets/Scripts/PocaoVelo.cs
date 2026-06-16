@@ -4,6 +4,8 @@ public class PocaoVelo : MonoBehaviour
 {
     [SerializeField] private float duracao = 10f;
     [SerializeField] private float speedBonus = 3f;
+    [SerializeField] private AudioSource audioSource; // AudioSource num objeto persistente
+    [SerializeField] private AudioClip somRecolha;    // som ao apanhar
 
     private Player player;
 
@@ -18,10 +20,11 @@ public class PocaoVelo : MonoBehaviour
             Player.Stamina = 999999999f;
             Player.MaxStamina = 999999999f;
 
-            // Invoke no próprio script antes de destruir o objeto
+            if (audioSource != null && somRecolha != null)
+                audioSource.PlayOneShot(somRecolha);
+
             Invoke("ReverterEfeito", duracao);
 
-            // esconde a poção mas não destrói ainda
             gameObject.SetActive(false);
             Debug.Log("Poção de velocidade coletada! Efeito aplicado por " + duracao + " segundos.");
         }
