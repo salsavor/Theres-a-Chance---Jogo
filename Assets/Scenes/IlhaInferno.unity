@@ -2867,6 +2867,11 @@ MonoBehaviour:
   RegenRate: 10
   RegenDelay: 1.5
   StaminaBar: {fileID: 0}
+  footstepsSource: {fileID: 0}
+  walkClip: {fileID: 0}
+  runClip: {fileID: 0}
+  jumpSource: {fileID: 0}
+  jumpClip: {fileID: 0}
 --- !u!143 &91635628
 CharacterController:
   m_ObjectHideFlags: 0
@@ -26333,6 +26338,52 @@ Transform:
   m_Children:
   - {fileID: 483038996}
   m_Father: {fileID: 843265082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1146582570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146582572}
+  - component: {fileID: 1146582571}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1146582571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146582570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c320f115269f6ae49b69bc2823b65512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  colecionaveisAtual: 0
+  contadorUI: {fileID: 0}
+--- !u!4 &1146582572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146582570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9805, y: 141.60367, z: -70.62122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147992241
 GameObject:
@@ -54849,7 +54900,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 96ecaad7a570b98469822eefa187c147, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 66dbdcbdf1f17f3488323ba021c20e0f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &7883856721519267076
 Transform:
@@ -55833,3 +55884,4 @@ SceneRoots:
   - {fileID: 495597969}
   - {fileID: 1848254286}
   - {fileID: 752481495}
+  - {fileID: 1146582572}

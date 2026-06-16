@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public CharacterController characterController;
     public Transform cameraTransform;
 
-    [SerializeField] private float rotationSpeed = 10f; // rapidez a virar para o movimento
+    [SerializeField] private float rotationSpeed = 10f;
 
     [SerializeField] public static float runSpeed = 12.0f;
     [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
 
     public Image StaminaBar;
 
+    // ---------- ÁUDIO ----------
+    [Header("Audio")]
+    [SerializeField] private AudioSource footstepsSource; // AudioSource em loop para os passos
+    [SerializeField] private AudioClip walkClip;          // som de andar
+    [SerializeField] private AudioClip runClip;           // som de correr
+    [SerializeField] private AudioSource jumpSource;      // AudioSource para o salto (one-shot)
+    [SerializeField] private AudioClip jumpClip;          // som de saltar
+    // ---------------------------
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -53,6 +62,7 @@ public class Player : MonoBehaviour
         HandleRun();
         HandleMovement();
         AtualizarAnimacoes();
+        HandleFootsteps(); // gere o som dos passos a cada frame
     }
 
     private void HandleMovement()
@@ -71,7 +81,6 @@ public class Player : MonoBehaviour
         Vector3 desiredDirection = (forward * vertical + right * horizontal).normalized;
         float currentSpeed = isRunning ? runSpeed : speed;
 
-        // roda o player para a direção do movimento
         if (desiredDirection.sqrMagnitude > 0.01f)
         {
             Quaternion rotacaoAlvo = Quaternion.LookRotation(desiredDirection);
@@ -93,6 +102,7 @@ public class Player : MonoBehaviour
                 moveDirection.y = jumpSpeed;
                 canDoubleJump = true;
                 groundedTimer = 0f;
+                TocarSalto(); // toca o som do salto
             }
         }
         else
@@ -113,6 +123,7 @@ public class Player : MonoBehaviour
                     Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
                     regenTimer = 0f;
                     UpdateStaminaBar();
+                    TocarSalto(); // toca o som também no double jump
                 }
             }
         }
@@ -171,7 +182,48 @@ public class Player : MonoBehaviour
         animator.SetBool("jump", !characterController.isGrounded);
     }
 
-        private void OnControllerColliderHit(ControllerColliderHit hit)
+    // ---------- MÉTODOS DE ÁUDIO ----------
+
+    // toca o som de salto (uma vez por salto)
+    private void TocarSalto()
+    {
+        if (jumpSource != null && jumpClip != null)
+            jumpSource.PlayOneShot(jumpClip);
+    }
+
+    // gere o som dos passos consoante o estado: parado / andar / correr / no ar
+    private void HandleFootsteps()
+    {
+        if (footstepsSource == null) return;
+
+        // está em movimento no chão?
+        bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
+        bool grounded = characterController.isGrounded;
+
+        if (isMoving && grounded)
+        {
+            // escolhe o clip certo (correr ou andar)
+            AudioClip clipDesejado = isRunning ? runClip : walkClip;
+
+            // se mudou de estado (andar<->correr) ou não está a tocar, troca e arranca
+            if (footstepsSource.clip != clipDesejado || !footstepsSource.isPlaying)
+            {
+                footstepsSource.clip = clipDesejado;
+                footstepsSource.loop = true;
+                footstepsSource.Play();
+            }
+        }
+        else
+        {
+            // parado ou no ar → pára os passos
+            if (footstepsSource.isPlaying)
+                footstepsSource.Stop();
+        }
+    }
+
+    // --------------------------------------
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Lava"))
         {
@@ -179,5 +231,3 @@ public class Player : MonoBehaviour
         }
     }
 }
-
-
