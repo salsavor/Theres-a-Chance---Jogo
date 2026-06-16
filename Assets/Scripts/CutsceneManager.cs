@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [SerializeField] private string nextSceneName;
     private VideoPlayer videoPlayer;
 
     void Start()
@@ -20,7 +21,7 @@ public class CutsceneManager : MonoBehaviour
     void VideoFilmou(VideoPlayer vp)
     {
         // Carrega a cena do tutorial
-        SceneManager.LoadScene("IlhaTutorial");
+        SceneManager.LoadScene(nextSceneName);
     }
 
     // Opcional: Se o jogador carregar no Espaço ou Enter, passa à frente (Skip)
@@ -28,7 +29,7 @@ public class CutsceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("IlhaTutorial");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 }

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9564116b414a6774988a2d04ba2b397e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneManager
-  nomeDaProximaCena: IlhaTutorial
+  nextSceneName: IlhaTutorial
 --- !u!328 &41972617
 VideoPlayer:
   m_ObjectHideFlags: 0
