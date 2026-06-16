@@ -4,32 +4,36 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
-    [SerializeField] private string nextSceneName;
-    private VideoPlayer videoPlayer;
+    [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private string nomeScene;
+    [SerializeField] private int videoIndex;
 
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
 
-        // Diz ao Unity para chamar a função "VideoFilmou" quando o vídeo terminar
-        videoPlayer.loopPointReached += VideoFilmou;
+        // quando o video terminar, passa para a proxima scene
+        videoPlayer.loopPointReached += VideoTerminou;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void VideoFilmou(VideoPlayer vp)
+    private void VideoTerminou(VideoPlayer vp)
     {
-        // Carrega a cena do tutorial
-        SceneManager.LoadScene(nextSceneName);
+        LoadingData.sceneDestino = nomeScene;
+        LoadingData.videoIndex = videoIndex;
+        SceneManager.LoadScene("LoadingScreen");
     }
 
-    // Opcional: Se o jogador carregar no Espaço ou Enter, passa à frente (Skip)
+    // clicar passa a cutscene
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene(nextSceneName);
+            LoadingData.sceneDestino = nomeScene;
+            LoadingData.videoIndex = videoIndex;
+            SceneManager.LoadScene("LoadingScreen");
         }
     }
 }

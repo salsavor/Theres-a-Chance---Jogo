@@ -170,7 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9564116b414a6774988a2d04ba2b397e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneManager
-  nextSceneName: IlhaTutorial
+  videoPlayer: {fileID: 0}
+  nomeScene: IlhaTutorial
+  videoIndex: 0
 --- !u!328 &41972617
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -179,7 +181,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41972614}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: fc836a5773d73bb408288fdae15a4d51, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 3902aafece895124eab451f4f749c044, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

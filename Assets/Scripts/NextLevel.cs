@@ -5,6 +5,7 @@ public class NextLevel : MonoBehaviour
 {
     [SerializeField] private string nomeScene;
     [SerializeField] private int colecionaveisNecessarios;
+    [SerializeField] private int videoIndex;
 
     void OnTriggerEnter(Collider other)
     {
@@ -13,7 +14,9 @@ public class NextLevel : MonoBehaviour
             if (GameManager.instance.colecionaveisAtual >= colecionaveisNecessarios)
             {
                 GameManager.instance.ResetarColecionaveis();
-                SceneManager.LoadScene(nomeScene);
+                LoadingData.sceneDestino = nomeScene;
+                LoadingData.videoIndex = videoIndex;
+                SceneManager.LoadScene("LoadingScreen");
             }
             else
             {

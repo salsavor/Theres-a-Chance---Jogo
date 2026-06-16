@@ -48726,6 +48726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
   nomeScene: IlhaMain
   colecionaveisNecessarios: 1
+  videoIndex: 3
 --- !u!1 &2085676545
 GameObject:
   m_ObjectHideFlags: 0
@@ -55474,7 +55475,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 51aeb04b587b66342a410b294011e240, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 410a63f449962d845b53a19e71b73abe, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &7883856721519267076
 Transform:

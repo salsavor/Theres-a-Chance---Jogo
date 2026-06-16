@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CutsceneInicial.unity
     guid: 0e7862c4107816445996d6e15a70798c
   - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 39040691911f3f74aa0e8587c7d0928e
+  - enabled: 1
     path: Assets/Scenes/IlhaTutorial.unity
     guid: 0f1a9a81cf259da4891334da734eb1af
   - enabled: 1

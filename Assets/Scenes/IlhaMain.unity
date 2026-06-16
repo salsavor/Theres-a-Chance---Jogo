@@ -10785,6 +10785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
   nomeScene: 
   colecionaveisNecessarios: 0
+  videoIndex: 4
 --- !u!64 &722688870
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125879,6 +125880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
   nomeScene: IlhaInferno
   colecionaveisNecessarios: 0
+  videoIndex: 0
 --- !u!4 &8248265938872881237
 Transform:
   m_ObjectHideFlags: 0
