@@ -38,10 +38,9 @@ public class Player : MonoBehaviour
 
     // ---------- ÁUDIO ----------
     [Header("Audio")]
-    [SerializeField] private AudioSource footstepsSource; // AudioSource em loop para os passos
+    [SerializeField] private AudioSource audioSource; // AudioSource em loop para os passos
     [SerializeField] private AudioClip walkClip;          // som de andar
     [SerializeField] private AudioClip runClip;           // som de correr
-    [SerializeField] private AudioSource jumpSource;      // AudioSource para o salto (one-shot)
     [SerializeField] private AudioClip jumpClip;          // som de saltar
     // ---------------------------
 
@@ -187,14 +186,14 @@ public class Player : MonoBehaviour
     // toca o som de salto (uma vez por salto)
     private void TocarSalto()
     {
-        if (jumpSource != null && jumpClip != null)
-            jumpSource.PlayOneShot(jumpClip);
+        if (audioSource != null && jumpClip != null)
+            audioSource.PlayOneShot(jumpClip);
     }
 
     // gere o som dos passos consoante o estado: parado / andar / correr / no ar
     private void HandleFootsteps()
     {
-        if (footstepsSource == null) return;
+        if (audioSource == null) return;
 
         // está em movimento no chão?
         bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
@@ -206,18 +205,18 @@ public class Player : MonoBehaviour
             AudioClip clipDesejado = isRunning ? runClip : walkClip;
 
             // se mudou de estado (andar<->correr) ou não está a tocar, troca e arranca
-            if (footstepsSource.clip != clipDesejado || !footstepsSource.isPlaying)
+            if (audioSource.clip != clipDesejado || !audioSource.isPlaying)
             {
-                footstepsSource.clip = clipDesejado;
-                footstepsSource.loop = true;
-                footstepsSource.Play();
+                audioSource.clip = clipDesejado;
+                audioSource.loop = true;
+                audioSource.Play();
             }
         }
         else
         {
             // parado ou no ar → pára os passos
-            if (footstepsSource.isPlaying)
-                footstepsSource.Stop();
+            if (audioSource.isPlaying)
+                audioSource.Stop();
         }
     }
 
