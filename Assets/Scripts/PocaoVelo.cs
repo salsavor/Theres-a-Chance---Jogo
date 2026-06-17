@@ -25,7 +25,7 @@ public class PocaoVelo : MonoBehaviour
 
         // Garante que a barra começa escondida
         if (grupoInterfacePocao != null)
-            grupoInterfacePocao.SetActive(false); // Esconde o grupo inteiro ao iniciar
+            grupoInterfacePocao.SetActive(false); // Esconde o grupo do hud ao iniciar
     }
 
     void OnTriggerEnter(Collider other)
@@ -88,7 +88,7 @@ public class PocaoVelo : MonoBehaviour
         efeitoAtivo = false;
         
         if (grupoInterfacePocao != null)
-            grupoInterfacePocao.SetActive(false); // Esconde o grupo todo novamente
+            grupoInterfacePocao.SetActive(false); // Esconde o grupo do hud ao terminar
 
         if (player != null)
         {
