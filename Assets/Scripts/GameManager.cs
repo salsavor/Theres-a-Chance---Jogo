@@ -4,7 +4,6 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    
     public int colecionaveisAtual = 0;
 
     void Awake()
