@@ -12,6 +12,9 @@ public class InimigoHumanoide : MonoBehaviour
     [SerializeField] private float intervaloAtaque = 1.5f;
     [SerializeField] private float tempoAteDano = 1.5f;    // espera antes do dano (deixa a animação tocar)
     [SerializeField] private float toleranciaOrigem = 0.5f;
+    [SerializeField] private AudioSource audioSource; 
+    [SerializeField] private AudioClip attackSound;
+
 
     [SerializeField] private Animator animator;
     private NavMeshAgent agent;
@@ -83,6 +86,8 @@ public class InimigoHumanoide : MonoBehaviour
             animator.SetFloat("speed", 0f);
             animator.ResetTrigger("attack");
             animator.SetTrigger("attack");
+             if (attackSound != null)
+                AudioSource.PlayClipAtPoint(attackSound, transform.position);
         }
 
         // espera a animação desenrolar ANTES de aplicar o dano

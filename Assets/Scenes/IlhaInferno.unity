@@ -2003,6 +2003,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 57578930}
 --- !u!82 &57578933
 AudioSource:
@@ -2265,6 +2267,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 64136136}
 --- !u!82 &64136139
 AudioSource:
@@ -2828,7 +2832,7 @@ MonoBehaviour:
   escalaHover: 1.1
   velocidade: 8
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 5addbd97d4108cd49944ce9233de20af, type: 3}
+  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &79210243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2849,7 +2853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4b19136a86174b045a3c663c54e60d69, type: 3}
+  m_Texture: {fileID: 2800000, guid: 47291b026e7ad44438a0939c4b0087c0, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4314,6 +4318,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 124385785}
 --- !u!82 &124385788
 AudioSource:
@@ -6389,7 +6395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6d2442eb45f71d64783a550d81045f0b, type: 3}
+  m_Texture: {fileID: 2800000, guid: db08667c7170dcb42b1142273dd7b88e, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -10708,6 +10714,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 427165739}
 --- !u!82 &427165742
 AudioSource:
@@ -12121,6 +12129,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 465214326}
 --- !u!82 &465214329
 AudioSource:
@@ -13747,6 +13757,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 513939203}
 --- !u!82 &513939206
 AudioSource:
@@ -17271,6 +17283,10 @@ MonoBehaviour:
   nomeScene: IlhaTutorial
   colecionaveisNecessarios: 0
   videoIndex: 3
+  texto: {fileID: 0}
+  tempoFadeIn: 1
+  tempoVisivel: 2
+  tempoFadeOut: 1
 --- !u!95 &668673344
 Animator:
   serializedVersion: 7
@@ -19538,7 +19554,7 @@ MonoBehaviour:
   escalaHover: 1.1
   velocidade: 8
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 5addbd97d4108cd49944ce9233de20af, type: 3}
+  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &779890877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19559,7 +19575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9a74fb99b2083c443bf8ea89e59aaec3, type: 3}
+  m_Texture: {fileID: 2800000, guid: f3b1a76e10ba55748841100d78835920, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -20061,6 +20077,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 796325395}
 --- !u!82 &796325398
 AudioSource:
@@ -21036,6 +21054,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 834321934}
 --- !u!82 &834321937
 AudioSource:
@@ -22846,6 +22866,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 899502437}
 --- !u!82 &899502440
 AudioSource:
@@ -23225,7 +23247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7358dedd45624e347bc0a68a26e87f58, type: 3}
+  m_Texture: {fileID: 2800000, guid: cce3e491a5f2d634daa2400e9dc4a5a4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -23540,6 +23562,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 917615460}
 --- !u!82 &917615463
 AudioSource:
@@ -25438,6 +25462,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 993713559}
 --- !u!82 &993713562
 AudioSource:
@@ -29036,6 +29062,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1138209484}
 --- !u!82 &1138209487
 AudioSource:
@@ -29870,6 +29898,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1157556701}
 --- !u!82 &1157556704
 AudioSource:
@@ -31085,6 +31115,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1209742807}
 --- !u!82 &1209742810
 AudioSource:
@@ -33186,6 +33218,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1307168953}
 --- !u!82 &1307168956
 AudioSource:
@@ -33544,6 +33578,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1316925459}
 --- !u!82 &1316925462
 AudioSource:
@@ -35533,6 +35569,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1386810359}
 --- !u!82 &1386810362
 AudioSource:
@@ -36597,6 +36635,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1415520710}
 --- !u!82 &1415520713
 AudioSource:
@@ -37248,6 +37288,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1438334439}
 --- !u!82 &1438334442
 AudioSource:
@@ -38092,6 +38134,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1453822309}
 --- !u!82 &1453822312
 AudioSource:
@@ -39156,6 +39200,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1481169178}
 --- !u!82 &1481169181
 AudioSource:
@@ -42619,6 +42665,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1613421125}
 --- !u!82 &1613421128
 AudioSource:
@@ -43104,6 +43152,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1631453393}
 --- !u!82 &1631453396
 AudioSource:
@@ -44875,6 +44925,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1699619094}
 --- !u!82 &1699619097
 AudioSource:
@@ -46189,7 +46241,7 @@ MonoBehaviour:
   escalaHover: 1.1
   velocidade: 8
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 5addbd97d4108cd49944ce9233de20af, type: 3}
+  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &1747707307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46210,7 +46262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4f07a67a2a2a4aa48b1bf31a9ca5a667, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1eac962edcc9b824c9e6c02009b174e6, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -47368,6 +47420,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1799707175}
 --- !u!82 &1799707178
 AudioSource:
@@ -52673,6 +52727,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1991613133}
 --- !u!82 &1991613136
 AudioSource:
@@ -54996,6 +55052,10 @@ MonoBehaviour:
   nomeScene: IlhaMain
   colecionaveisNecessarios: 4
   videoIndex: 3
+  texto: {fileID: 0}
+  tempoFadeIn: 1
+  tempoVisivel: 2
+  tempoFadeOut: 1
 --- !u!1 &2085676545
 GameObject:
   m_ObjectHideFlags: 0
@@ -55418,6 +55478,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 2106102221}
 --- !u!82 &2106102224
 AudioSource:
@@ -61842,7 +61904,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 410a63f449962d845b53a19e71b73abe, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d342909a90936554e9efdc2b39c907bd, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &7883856721519267076
 Transform:
@@ -62713,6 +62775,8 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
+  audioSource: {fileID: 9110046638732110549}
+  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 9110046638732110548}
 --- !u!195 &9110046638732110547
 NavMeshAgent:
