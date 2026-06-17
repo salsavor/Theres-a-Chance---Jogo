@@ -5,6 +5,8 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject painelPausa;
     [SerializeField] private GameObject painelControlos;
+    [SerializeField] private CameraOrbit scriptCamara;
+    [SerializeField] private Player scriptPlayer;
     private bool pausado = false;
 
     void Start()
@@ -38,6 +40,9 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         pausado = true;
+
+        if (scriptCamara != null) scriptCamara.enabled = false;
+        if (scriptPlayer != null) scriptPlayer.enabled = false;
     }
 
     public void Retomar()
@@ -48,6 +53,9 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pausado = false;
+
+        if (scriptCamara != null) scriptCamara.enabled = true;
+        if (scriptPlayer != null) scriptPlayer.enabled = true;
     }
 
     public void AbrirControlos()
