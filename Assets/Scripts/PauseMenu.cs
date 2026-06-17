@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -7,12 +8,21 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject painelControlos;
     [SerializeField] private CameraOrbit scriptCamara;
     [SerializeField] private Player scriptPlayer;
+
+    [Header("Configurações de Áudio (Pausa)")]
+    [SerializeField] private AudioMixerSnapshot somNormalSnapshot; // Estado com som normal
+    [SerializeField] private AudioMixerSnapshot somPausaSnapshot;  // Estado com som abafado/baixo
+    [SerializeField] private float tempoTransicaoSom = 0.15f; // Velocidade da transição
+
     private bool pausado = false;
 
     void Start()
     {
         painelPausa.SetActive(false);
         painelControlos.SetActive(false);
+
+        if (somNormalSnapshot != null)
+            somNormalSnapshot.TransitionTo(0f);
     }
 
     void Update()
@@ -43,6 +53,9 @@ public class PauseMenu : MonoBehaviour
 
         if (scriptCamara != null) scriptCamara.enabled = false;
         if (scriptPlayer != null) scriptPlayer.enabled = false;
+
+        if (somPausaSnapshot != null)
+            somPausaSnapshot.TransitionTo(tempoTransicaoSom);
     }
 
     public void Retomar()
@@ -56,6 +69,9 @@ public class PauseMenu : MonoBehaviour
 
         if (scriptCamara != null) scriptCamara.enabled = true;
         if (scriptPlayer != null) scriptPlayer.enabled = true;
+
+        if (somNormalSnapshot != null)
+            somNormalSnapshot.TransitionTo(tempoTransicaoSom);
     }
 
     public void AbrirControlos()
