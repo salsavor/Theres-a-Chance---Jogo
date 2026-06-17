@@ -38,10 +38,11 @@ public class Player : MonoBehaviour
 
     // ---------- ÁUDIO ----------
     [Header("Audio")]
-    [SerializeField] private AudioSource audioSource; // AudioSource em loop para os passos
-    [SerializeField] private AudioClip walkClip;          // som de andar
-    [SerializeField] private AudioClip runClip;           // som de correr
-    [SerializeField] private AudioClip jumpClip;          // som de saltar
+[SerializeField] private AudioSource audioSource;     // loop dos passos
+[SerializeField] private AudioSource sfxSource;       // efeitos pontuais (jump, etc.)
+[SerializeField] private AudioClip walkClip;
+[SerializeField] private AudioClip runClip;
+[SerializeField] private AudioClip jumpClip;       //saltar
     // ---------------------------
 
     void Start()
@@ -185,10 +186,10 @@ public class Player : MonoBehaviour
 
     // toca o som de salto (uma vez por salto)
     private void TocarSalto()
-    {
-        if (jumpClip != null)
-            audioSource.PlayOneShot(jumpClip);
-    }
+{
+    if (jumpClip != null && sfxSource != null)
+        sfxSource.PlayOneShot(jumpClip);
+}
 
     // gere o som dos passos consoante o estado: parado / andar / correr / no ar
     private void HandleFootsteps()
