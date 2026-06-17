@@ -20,6 +20,7 @@ public class NextLevel : MonoBehaviour
         texto.gameObject.SetActive(false); // esconde o texto inicialmente
     }
 
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -65,5 +66,4 @@ public class NextLevel : MonoBehaviour
 
         texto.gameObject.SetActive(false);
     }
-
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using TMPro;
 
 public class VidaPlayer : MonoBehaviour
 {
@@ -15,6 +17,13 @@ public class VidaPlayer : MonoBehaviour
 
     [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
 
+    [Header("Texto")]
+    [SerializeField] private TextMeshProUGUI texto;
+    [SerializeField] private float tempoFadeIn = 1f;
+    [SerializeField] private float tempoVisivel = 2f;
+    [SerializeField] private float tempoFadeOut = 1f;
+
+
     void Start()
     {
         vidasAtuais = 3;
@@ -22,6 +31,8 @@ public class VidaPlayer : MonoBehaviour
         life2.gameObject.SetActive(true);
         life3.gameObject.SetActive(true);
         characterController = GetComponent<CharacterController>();
+
+        texto.gameObject.SetActive(false); // esconde o texto inicialmente
 
     }
 
@@ -101,6 +112,8 @@ public class VidaPlayer : MonoBehaviour
             checkpointDesafio = null; // reseta o checkpoint para null
             ReativarPocoes();
             DeathCounter.deathCount++;
+            texto.gameObject.SetActive(true); // mostra o texto
+            StartCoroutine(CheckpointRoutine());
         }
     }
 
@@ -128,4 +141,33 @@ public class VidaPlayer : MonoBehaviour
         transform.position = destino.position;
         characterController.enabled = true;
     }
+
+
+    private IEnumerator CheckpointRoutine()
+    {
+        // fade in
+        float t = 0f;
+        while (t < tempoFadeIn)
+        {
+            t += Time.deltaTime;
+            texto.alpha = Mathf.Lerp(0f, 1f, t / tempoFadeIn);
+            yield return null;
+        }
+
+        // visível
+        yield return new WaitForSeconds(tempoVisivel);
+
+        // fade out
+        t = 0f;
+        while (t < tempoFadeOut)
+        {
+            t += Time.deltaTime;
+            texto.alpha = Mathf.Lerp(1f, 0f, t / tempoFadeOut);
+            yield return null;
+        }
+
+        texto.gameObject.SetActive(false);
+    }
+
+    
 }

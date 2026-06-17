@@ -3425,7 +3425,7 @@ MonoBehaviour:
   materialHover: {fileID: 2100000, guid: edb2d52256fe8014b9952ddd549dcd3f, type: 2}
   sceneParaCarregar: CutsceneInicial
   audioSource: {fileID: 4578109465767788753}
-  somBtn: {fileID: 8300000, guid: 5addbd97d4108cd49944ce9233de20af, type: 3}
+  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!64 &4578109465767788752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4100,11 +4100,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1299e5f9941e8a64f976da5a52f7dcf6, type: 3}
+  m_Resource: {fileID: 8300000, guid: 461b31cd585accf4686402e8c9cb19e1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.111
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4701,7 +4701,7 @@ MonoBehaviour:
   materialHover: {fileID: 2100000, guid: edb2d52256fe8014b9952ddd549dcd3f, type: 2}
   sceneParaCarregar: 
   audioSource: {fileID: 8854586731748151430}
-  somBtn: {fileID: 8300000, guid: 5addbd97d4108cd49944ce9233de20af, type: 3}
+  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!64 &8854586731748151429
 MeshCollider:
   m_ObjectHideFlags: 0
