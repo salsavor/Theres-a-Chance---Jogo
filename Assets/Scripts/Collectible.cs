@@ -12,9 +12,8 @@ public class Collectible : MonoBehaviour
             GameManager.instance.AdicionarColecionavel();
 
             // toca o som através do AudioSource externo (sobrevive ao SetActive)
-            if (audioSource != null && somRecolha != null)
-                audioSource.PlayOneShot(somRecolha);
-
+            if (somRecolha != null)
+                AudioSource.PlayClipAtPoint(somRecolha, transform.position);
             gameObject.SetActive(false);
         }
     }

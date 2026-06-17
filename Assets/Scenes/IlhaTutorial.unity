@@ -3704,9 +3704,9 @@ MonoBehaviour:
   RegenRate: 10
   RegenDelay: 0.5
   StaminaBar: {fileID: 545420517}
-  audioSource: {fileID: 0}
-  walkClip: {fileID: 8300000, guid: eb2a4fadd9f4c2349aa03a69ee957d36, type: 3}
-  runClip: {fileID: 8300000, guid: eb2a4fadd9f4c2349aa03a69ee957d36, type: 3}
+  audioSource: {fileID: 1358460566}
+  walkClip: {fileID: 8300000, guid: c01c083c0599c754daa452fc61e55164, type: 3}
+  runClip: {fileID: 8300000, guid: be4415e18be052f4c883ef2c0c5e8fac, type: 3}
   jumpClip: {fileID: 8300000, guid: 557876d87a863b94d9a6f113b5d77438, type: 3}
 --- !u!143 &1358460562
 CharacterController:

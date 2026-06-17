@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
     // toca o som de salto (uma vez por salto)
     private void TocarSalto()
     {
-        if (audioSource != null && jumpClip != null)
+        if (jumpClip != null)
             audioSource.PlayOneShot(jumpClip);
     }
 
