@@ -1930,8 +1930,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 57578930}
 --- !u!82 &57578933
 AudioSource:
@@ -2194,8 +2192,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 64136136}
 --- !u!82 &64136139
 AudioSource:
@@ -3952,8 +3948,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 124385785}
 --- !u!82 &124385788
 AudioSource:
@@ -10404,8 +10398,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 427165739}
 --- !u!82 &427165742
 AudioSource:
@@ -11727,8 +11719,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 465214326}
 --- !u!82 &465214329
 AudioSource:
@@ -13158,8 +13148,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 513939203}
 --- !u!82 &513939206
 AudioSource:
@@ -18803,6 +18791,8 @@ MonoBehaviour:
   speedBonus: 3
   audioSource: {fileID: 783197833}
   somRecolha: {fileID: 8300000, guid: ee6f5e6e7faeca54eb36a13b1ae158bf, type: 3}
+  barraTempoImagem: {fileID: 0}
+  grupoInterfacePocao: {fileID: 0}
 --- !u!95 &783197827
 Animator:
   serializedVersion: 7
@@ -19141,8 +19131,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 796325395}
 --- !u!82 &796325398
 AudioSource:
@@ -20180,8 +20168,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 834321934}
 --- !u!82 &834321937
 AudioSource:
@@ -22081,8 +22067,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 899502437}
 --- !u!82 &899502440
 AudioSource:
@@ -22705,8 +22689,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 917615460}
 --- !u!82 &917615463
 AudioSource:
@@ -24575,8 +24557,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 993713559}
 --- !u!82 &993713562
 AudioSource:
@@ -28033,8 +28013,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1138209484}
 --- !u!82 &1138209487
 AudioSource:
@@ -28831,8 +28809,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1157556701}
 --- !u!82 &1157556704
 AudioSource:
@@ -29973,8 +29949,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1209742807}
 --- !u!82 &1209742810
 AudioSource:
@@ -31973,8 +31947,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1307168953}
 --- !u!82 &1307168956
 AudioSource:
@@ -32333,8 +32305,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1316925459}
 --- !u!82 &1316925462
 AudioSource:
@@ -34249,8 +34219,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1386810359}
 --- !u!82 &1386810362
 AudioSource:
@@ -35207,8 +35175,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1415520710}
 --- !u!82 &1415520713
 AudioSource:
@@ -35860,8 +35826,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1438334439}
 --- !u!82 &1438334442
 AudioSource:
@@ -36706,8 +36670,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1453822309}
 --- !u!82 &1453822312
 AudioSource:
@@ -37632,8 +37594,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1481169178}
 --- !u!82 &1481169181
 AudioSource:
@@ -40810,8 +40770,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1613421125}
 --- !u!82 &1613421128
 AudioSource:
@@ -41297,8 +41255,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1631453393}
 --- !u!82 &1631453396
 AudioSource:
@@ -43003,8 +42959,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1699619094}
 --- !u!82 &1699619097
 AudioSource:
@@ -45278,8 +45232,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1799707175}
 --- !u!82 &1799707178
 AudioSource:
@@ -50578,8 +50530,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 1991613133}
 --- !u!82 &1991613136
 AudioSource:
@@ -53325,8 +53275,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 2106102221}
 --- !u!82 &2106102224
 AudioSource:
@@ -60622,8 +60570,6 @@ MonoBehaviour:
   intervaloAtaque: 1.5
   tempoAteDano: 0.5
   toleranciaOrigem: 0.5
-  audioSource: {fileID: 9110046638732110549}
-  attackSound: {fileID: 8300000, guid: 0d5de8850b91d3f4983635525ebd37bd, type: 3}
   animator: {fileID: 9110046638732110548}
 --- !u!195 &9110046638732110547
 NavMeshAgent:
