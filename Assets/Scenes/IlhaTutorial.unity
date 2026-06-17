@@ -3534,6 +3534,7 @@ MonoBehaviour:
   somNormalSnapshot: {fileID: 24500006, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   somPausaSnapshot: {fileID: -2635682645905160871, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   tempoTransicaoSom: 0.15
+  playerAudioSource: {fileID: 1358460566}
 --- !u!4 &1193058328
 Transform:
   m_ObjectHideFlags: 0

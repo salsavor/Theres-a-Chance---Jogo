@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioMixerSnapshot somNormalSnapshot; // Estado com som normal
     [SerializeField] private AudioMixerSnapshot somPausaSnapshot;  // Estado com som abafado/baixo
     [SerializeField] private float tempoTransicaoSom = 0.15f; // Velocidade da transição
+    [SerializeField] private AudioSource playerAudioSource; // AudioSource do Player para pausar sons de passos, etc.
 
     private bool pausado = false;
 
@@ -53,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
         if (scriptCamara != null) scriptCamara.enabled = false;
         if (scriptPlayer != null) scriptPlayer.enabled = false;
-
+        if (playerAudioSource != null) playerAudioSource.Pause();
         if (somPausaSnapshot != null)
             somPausaSnapshot.TransitionTo(tempoTransicaoSom);
     }
@@ -69,7 +70,7 @@ public class PauseMenu : MonoBehaviour
 
         if (scriptCamara != null) scriptCamara.enabled = true;
         if (scriptPlayer != null) scriptPlayer.enabled = true;
-
+        if (playerAudioSource != null) playerAudioSource.UnPause();
         if (somNormalSnapshot != null)
             somNormalSnapshot.TransitionTo(tempoTransicaoSom);
     }
