@@ -28,6 +28,8 @@ public class CutsceneManager : MonoBehaviour
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene(nomeScene);
         }
     }
