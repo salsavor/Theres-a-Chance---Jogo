@@ -86,7 +86,7 @@ public class PocaoVelo : MonoBehaviour
     private void ReverterEfeito()
     {
         efeitoAtivo = false;
-        
+
         if (grupoInterfacePocao != null)
             grupoInterfacePocao.SetActive(false); // Esconde o grupo do hud ao terminar
 
@@ -99,8 +99,8 @@ public class PocaoVelo : MonoBehaviour
         }
 
         Debug.Log("Efeito terminado. Velocidade revertida.");
-
-        // Agora que a barra sumiu e o efeito acabou, o objeto apaga-se da cena com segurança
-        Destroy(gameObject);
+        if (meuCollider != null) meuCollider.enabled = true;
+        if (meuRenderer != null) meuRenderer.enabled = true;
+        gameObject.SetActive(false);
     }
 }

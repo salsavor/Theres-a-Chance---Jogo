@@ -6,16 +6,13 @@ using TMPro;
 
 public class VidaPlayer : MonoBehaviour
 {
-
     [SerializeField] private GameObject life1, life2, life3;
 
     [SerializeField] public static Transform checkpointDesafio = null;   // volta aqui ao perder uma vida
     [SerializeField] private Transform respawnInicial;      // volta aqui quando fica sem vidas
 
-    public static int vidasAtuais;                         // vidas atuais
+    public static int vidasAtuais;
     private CharacterController characterController;
-
-    [SerializeField] private KeyCode respawnKey = KeyCode.R; // tecla para respawn manual (para testes)
 
     [Header("Texto")]
     [SerializeField] private TextMeshProUGUI texto;
@@ -23,6 +20,29 @@ public class VidaPlayer : MonoBehaviour
     [SerializeField] private float tempoVisivel = 2f;
     [SerializeField] private float tempoFadeOut = 1f;
 
+    private PlayerControls controls;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+
+        // Vincula a ação de Revive para chamar a função PerderVida
+        controls.Player.Revive.performed += ctx => PerderVida();
+    }
+
+    // CORREÇÃO 1: Ativar o mapa de controlos quando o Player entra no jogo
+    private void OnEnable()
+    {
+        if (controls != null)
+            controls.Enable();
+    }
+
+    // CORREÇÃO 2: Desativar os controlos se o Player for destruído ou mudar de cena (evita bugs de memória)
+    private void OnDisable()
+    {
+        if (controls != null)
+            controls.Disable();
+    }
 
     void Start()
     {
@@ -33,7 +53,6 @@ public class VidaPlayer : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         texto.gameObject.SetActive(false); // esconde o texto inicialmente
-
     }
 
     private void saude()
@@ -66,19 +85,12 @@ public class VidaPlayer : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         saude();
-        // tecla de respawn manual (para testes)
-        if (Input.GetKeyDown(respawnKey))
-        {
-            Debug.Log("Respawn manual ativado.");
-            PerderVida();
-        }
     }
 
-    // chamado pelo inimigo quando toca no player
+    // chamado pelo inimigo quando toca no player ou pelo comando (Revive)
     public void PerderVida()
     {
         vidasAtuais--;
@@ -142,7 +154,6 @@ public class VidaPlayer : MonoBehaviour
         characterController.enabled = true;
     }
 
-
     private IEnumerator CheckpointRoutine()
     {
         // fade in
@@ -168,6 +179,4 @@ public class VidaPlayer : MonoBehaviour
 
         texto.gameObject.SetActive(false);
     }
-
-    
 }

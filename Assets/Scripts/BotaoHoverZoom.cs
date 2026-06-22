@@ -1,19 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BotaoHoverZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BotaoHoverZoom : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private float escalaHover = 1.1f;
     [SerializeField] private float velocidade = 8f;
-    [SerializeField] private AudioSource audioSource; // AudioSource na camara
-    [SerializeField] private AudioClip somBtn;
+    [SerializeField] private AudioClip somHover;
+    [SerializeField] private AudioSource audioSource;
     private Vector3 escalaOriginal;
     private bool hover = false;
 
-    void Start()
-    {
-        escalaOriginal = transform.localScale;
-    }
+    void Start() => escalaOriginal = transform.localScale;
 
     void Update()
     {
@@ -21,19 +18,20 @@ public class BotaoHoverZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         transform.localScale = Vector3.Lerp(transform.localScale, alvo, Time.unscaledDeltaTime * velocidade);
     }
 
-    // adiciona o EventTrigger no Inspector ou usa estas funções
-    public void OnPointerEnter(PointerEventData eventData)
+    // rato
+    public void OnPointerEnter(PointerEventData e) => AtivarHover();
+    public void OnPointerExit(PointerEventData e) => DesativarHover();
+
+    // gamepad/teclado
+    public void OnSelect(BaseEventData e) => AtivarHover();
+    public void OnDeselect(BaseEventData e) => DesativarHover();
+
+    private void AtivarHover()
     {
         hover = true;
-
-        if (audioSource != null && somBtn != null)
-        {
-            audioSource.PlayOneShot(somBtn);
-        }
+        if (somHover != null)
+            AudioSource.PlayClipAtPoint(somHover, transform.position);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        hover = false;
-    }
+    private void DesativarHover() => hover = false;
 }

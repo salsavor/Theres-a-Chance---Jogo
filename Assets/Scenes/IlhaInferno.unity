@@ -2831,8 +2831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BotaoHoverZoom
   escalaHover: 1.1
   velocidade: 8
+  somHover: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &79210243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3252,7 +3252,6 @@ MonoBehaviour:
   life2: {fileID: 1516392492}
   life3: {fileID: 696233889}
   respawnInicial: {fileID: 1727852236}
-  respawnKey: 114
   texto: {fileID: 2125342859}
   tempoFadeIn: 1
   tempoVisivel: 2
@@ -3272,7 +3271,6 @@ MonoBehaviour:
   characterController: {fileID: 91635628}
   cameraTransform: {fileID: 1082326402}
   rotationSpeed: 10
-  runKey: 304
   doubleJumpCost: 12
   animDampTime: 0.15
   RunCost: 8
@@ -17398,6 +17396,8 @@ MonoBehaviour:
   painelControlos: {fileID: 1632023210}
   scriptCamara: {fileID: 1082326398}
   scriptPlayer: {fileID: 91635627}
+  primeiroBotaoPausa: {fileID: 0}
+  primeiroBotaoControlos: {fileID: 0}
   somNormalSnapshot: {fileID: 24500006, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   somPausaSnapshot: {fileID: -2635682645905160871, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   tempoTransicaoSom: 0.15
@@ -19398,8 +19398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BotaoHoverZoom
   escalaHover: 1.1
   velocidade: 8
+  somHover: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &779890877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27589,6 +27589,7 @@ MonoBehaviour:
   alturaPivot: 1.6
   distancia: 4
   sensibilidade: 3
+  sensibilidadeGamepad: 150
   pitchMin: -30
   pitchMax: 70
   distanciaMinima: 0.5
@@ -46321,8 +46322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BotaoHoverZoom
   escalaHover: 1.1
   velocidade: 8
+  somHover: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
   audioSource: {fileID: 1082326403}
-  somBtn: {fileID: 8300000, guid: 67d7590c261ad864fbdd2dd030b1cb2f, type: 3}
 --- !u!114 &1747707307
 MonoBehaviour:
   m_ObjectHideFlags: 0

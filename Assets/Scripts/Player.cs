@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class Player : MonoBehaviour
@@ -12,19 +13,13 @@ public class Player : MonoBehaviour
     public Transform cameraTransform;
 
     [SerializeField] private float rotationSpeed = 10f;
-
     [SerializeField] public static float runSpeed = 12.0f;
-    [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
     [SerializeField] private float doubleJumpCost = 25f;
     private bool isRunning = false;
-
     private bool canDoubleJump = false;
-
     private float groundedTimer = 0f;
     private float groundedBuffer = 0.15f;
-
     [SerializeField] private float animDampTime = 0.1f;
-
     private Animator animator;
 
     public static float Stamina = 100f;
@@ -33,17 +28,36 @@ public class Player : MonoBehaviour
     public float RegenRate = 10f;
     public float RegenDelay = 1.5f;
     private float regenTimer = 0f;
-
     public Image StaminaBar;
 
-    // ---------- ÁUDIO ----------
+    // Input
+    private PlayerControls controls;
+    private Vector2 moveInput;
+    private bool jumpPressed;
+    private bool runHeld;
+
     [Header("Audio")]
-[SerializeField] private AudioSource audioSource;     // loop dos passos
-[SerializeField] private AudioSource sfxSource;       // efeitos pontuais (jump, etc.)
-[SerializeField] private AudioClip walkClip;
-[SerializeField] private AudioClip runClip;
-[SerializeField] private AudioClip jumpClip;       //saltar
-    // ---------------------------
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip walkClip;
+    [SerializeField] private AudioClip runClip;
+    [SerializeField] private AudioClip jumpClip;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+
+        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+
+        controls.Player.Jump.performed += ctx => jumpPressed = true;
+
+        controls.Player.Sprint.performed += ctx => runHeld = true;
+        controls.Player.Sprint.canceled += ctx => runHeld = false;
+    }
+
+    void OnEnable() => controls.Enable();
+    void OnDisable() => controls.Disable();
 
     void Start()
     {
@@ -62,23 +76,20 @@ public class Player : MonoBehaviour
         HandleRun();
         HandleMovement();
         AtualizarAnimacoes();
-        HandleFootsteps(); // gere o som dos passos a cada frame
+        HandleFootsteps();
+        jumpPressed = false; // reset no fim do frame
     }
 
     private void HandleMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
-
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
         right.Normalize();
 
-        Vector3 desiredDirection = (forward * vertical + right * horizontal).normalized;
+        Vector3 desiredDirection = (forward * moveInput.y + right * moveInput.x).normalized;
         float currentSpeed = isRunning ? runSpeed : speed;
 
         if (desiredDirection.sqrMagnitude > 0.01f)
@@ -97,12 +108,12 @@ public class Player : MonoBehaviour
             moveDirection = desiredDirection * currentSpeed;
             moveDirection.y = -2f;
 
-            if (Input.GetButtonDown("Jump"))
+            if (jumpPressed)
             {
                 moveDirection.y = jumpSpeed;
                 canDoubleJump = true;
                 groundedTimer = 0f;
-                TocarSalto(); // toca o som do salto
+                TocarSalto();
             }
         }
         else
@@ -111,20 +122,16 @@ public class Player : MonoBehaviour
             moveDirection.x = horizontalMovement.x;
             moveDirection.z = horizontalMovement.z;
 
-            if (Input.GetButtonDown("Jump") && canDoubleJump)
+            if (jumpPressed && canDoubleJump && Stamina >= doubleJumpCost)
             {
-                if (Stamina >= doubleJumpCost)
-                {
-                    moveDirection.y = jumpSpeed;
-                    canDoubleJump = false;
-                    groundedTimer = 0f;
-
-                    Stamina -= doubleJumpCost;
-                    Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
-                    regenTimer = 0f;
-                    UpdateStaminaBar();
-                    TocarSalto(); // toca o som também no double jump
-                }
+                moveDirection.y = jumpSpeed;
+                canDoubleJump = false;
+                groundedTimer = 0f;
+                Stamina -= doubleJumpCost;
+                Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
+                regenTimer = 0f;
+                UpdateStaminaBar();
+                TocarSalto();
             }
         }
 
@@ -134,10 +141,9 @@ public class Player : MonoBehaviour
 
     private void HandleRun()
     {
-        bool wantsToRun = Input.GetKey(runKey);
         bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
 
-        if (wantsToRun && isMoving && Stamina > 0f)
+        if (runHeld && isMoving && Stamina > 0f)
         {
             isRunning = true;
             Stamina -= RunCost * Time.deltaTime;
@@ -147,7 +153,6 @@ public class Player : MonoBehaviour
         else
         {
             isRunning = false;
-
             regenTimer += Time.deltaTime;
             if (regenTimer >= RegenDelay && Stamina < MaxStamina)
             {
@@ -162,50 +167,33 @@ public class Player : MonoBehaviour
     private void UpdateStaminaBar()
     {
         if (StaminaBar == null) return;
-
         StaminaBar.fillAmount = Stamina / MaxStamina;
-
-        if (Stamina / MaxStamina > 0.5f)
-            StaminaBar.color = Color.green;
-        else if (Stamina / MaxStamina > 0.25f)
-            StaminaBar.color = Color.yellow;
-        else
-            StaminaBar.color = Color.red;
+        if (Stamina / MaxStamina > 0.5f) StaminaBar.color = Color.green;
+        else if (Stamina / MaxStamina > 0.25f) StaminaBar.color = Color.yellow;
+        else StaminaBar.color = Color.red;
     }
 
     void AtualizarAnimacoes()
     {
         Vector3 velocidadeHorizontal = new Vector3(characterController.velocity.x, 0, characterController.velocity.z);
-        float velocidadeAtual = velocidadeHorizontal.magnitude;
-
-        animator.SetFloat("speed", velocidadeAtual, animDampTime, Time.deltaTime);
+        animator.SetFloat("speed", velocidadeHorizontal.magnitude, animDampTime, Time.deltaTime);
         animator.SetBool("jump", !characterController.isGrounded);
     }
 
-    // ---------- MÉTODOS DE ÁUDIO ----------
-
-    // toca o som de salto (uma vez por salto)
     private void TocarSalto()
-{
-    if (jumpClip != null && sfxSource != null)
-        sfxSource.PlayOneShot(jumpClip);
-}
+    {
+        if (jumpClip != null && sfxSource != null)
+            sfxSource.PlayOneShot(jumpClip);
+    }
 
-    // gere o som dos passos consoante o estado: parado / andar / correr / no ar
     private void HandleFootsteps()
     {
         if (audioSource == null) return;
-
-        // está em movimento no chão?
         bool isMoving = new Vector3(characterController.velocity.x, 0, characterController.velocity.z).magnitude > 0.1f;
-        bool grounded = characterController.isGrounded;
 
-        if (isMoving && grounded)
+        if (isMoving && characterController.isGrounded)
         {
-            // escolhe o clip certo (correr ou andar)
             AudioClip clipDesejado = isRunning ? runClip : walkClip;
-
-            // se mudou de estado (andar<->correr) ou não está a tocar, troca e arranca
             if (audioSource.clip != clipDesejado || !audioSource.isPlaying)
             {
                 audioSource.clip = clipDesejado;
@@ -215,19 +203,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // parado ou no ar → pára os passos
-            if (audioSource.isPlaying)
-                audioSource.Stop();
+            if (audioSource.isPlaying) audioSource.Stop();
         }
     }
-
-    // --------------------------------------
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Lava"))
-        {
             GetComponent<VidaPlayer>().PerderVida();
-        }
     }
 }

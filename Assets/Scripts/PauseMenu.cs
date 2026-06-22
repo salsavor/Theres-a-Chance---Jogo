@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,13 +10,35 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private CameraOrbit scriptCamara;
     [SerializeField] private Player scriptPlayer;
 
-    [Header("Configurações de Áudio (Pausa)")]
-    [SerializeField] private AudioMixerSnapshot somNormalSnapshot; // Estado com som normal
-    [SerializeField] private AudioMixerSnapshot somPausaSnapshot;  // Estado com som abafado/baixo
-    [SerializeField] private float tempoTransicaoSom = 0.15f; // Velocidade da transição
-    [SerializeField] private AudioSource playerAudioSource; // AudioSource do Player para pausar sons de passos, etc.
+    [SerializeField] private GameObject primeiroBotaoPausa;     // botão Continuar
+    [SerializeField] private GameObject primeiroBotaoControlos; // botão Voltar
 
-    private bool pausado = false;
+    [Header("Áudio")]
+    [SerializeField] private AudioMixerSnapshot somNormalSnapshot;
+    [SerializeField] private AudioMixerSnapshot somPausaSnapshot;
+    [SerializeField] private float tempoTransicaoSom = 0.15f;
+    [SerializeField] private AudioSource playerAudioSource;
+
+    public static bool pausado = false;
+    private PlayerControls controls;
+
+    void Awake()
+    {
+        pausado = false;
+        controls = new PlayerControls();
+
+        controls.Player.Pause.performed += ctx =>
+        {
+            if (painelControlos.activeSelf)
+            {
+                AbrirPausa();
+                return;
+            }
+
+            if (pausado) Retomar();
+            else Pausar();
+        };
+    }
 
     void Start()
     {
@@ -26,23 +49,8 @@ public class PauseMenu : MonoBehaviour
             somNormalSnapshot.TransitionTo(0f);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // se estiver nos controlos, volta para a pausa
-            if (painelControlos.activeSelf)
-            {
-                AbrirPausa();
-                return;
-            }
-
-            if (pausado)
-                Retomar();
-            else
-                Pausar();
-        }
-    }
+    void OnEnable() => controls.Enable();
+    void OnDisable() => controls.Disable();
 
     private void Pausar()
     {
@@ -52,11 +60,13 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         pausado = true;
 
+        // seleciona o primeiro botão para o gamepad navegar
+        EventSystem.current.SetSelectedGameObject(primeiroBotaoPausa);
+
         if (scriptCamara != null) scriptCamara.enabled = false;
         if (scriptPlayer != null) scriptPlayer.enabled = false;
         if (playerAudioSource != null) playerAudioSource.Pause();
-        if (somPausaSnapshot != null)
-            somPausaSnapshot.TransitionTo(tempoTransicaoSom);
+        if (somPausaSnapshot != null) somPausaSnapshot.TransitionTo(tempoTransicaoSom);
     }
 
     public void Retomar()
@@ -68,23 +78,26 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         pausado = false;
 
+        EventSystem.current.SetSelectedGameObject(null);
+
         if (scriptCamara != null) scriptCamara.enabled = true;
         if (scriptPlayer != null) scriptPlayer.enabled = true;
         if (playerAudioSource != null) playerAudioSource.UnPause();
-        if (somNormalSnapshot != null)
-            somNormalSnapshot.TransitionTo(tempoTransicaoSom);
+        if (somNormalSnapshot != null) somNormalSnapshot.TransitionTo(tempoTransicaoSom);
     }
 
     public void AbrirControlos()
     {
         painelPausa.SetActive(false);
         painelControlos.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(primeiroBotaoControlos);
     }
 
     private void AbrirPausa()
     {
         painelControlos.SetActive(false);
         painelPausa.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(primeiroBotaoPausa);
     }
 
     public void SairDoJogo()
