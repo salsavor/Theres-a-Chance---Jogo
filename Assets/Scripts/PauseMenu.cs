@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject painelPausa;
     [SerializeField] private GameObject painelControlos;
+    [SerializeField] private GameObject painelComando;
     [SerializeField] private CameraOrbit scriptCamara;
     [SerializeField] private Player scriptPlayer;
 
@@ -44,6 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         painelPausa.SetActive(false);
         painelControlos.SetActive(false);
+        painelComando.SetActive(false);
 
         if (somNormalSnapshot != null)
             somNormalSnapshot.TransitionTo(0f);
@@ -90,6 +92,7 @@ public class PauseMenu : MonoBehaviour
     {
         painelPausa.SetActive(false);
         painelControlos.SetActive(true);
+        painelComando.SetActive(false);
         EventSystem.current.SetSelectedGameObject(primeiroBotaoControlos);
     }
 
@@ -104,5 +107,17 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void MostrarTeclado()
+    {
+        painelControlos.SetActive(true);
+        painelComando.SetActive(false);
+    }
+
+    public void MostrarComando()
+    {
+        painelControlos.SetActive(false);
+        painelComando.SetActive(true);
     }
 }
