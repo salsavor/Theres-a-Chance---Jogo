@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject painelPausa;
     [SerializeField] private GameObject painelControlos;
     [SerializeField] private GameObject painelComando;
+    [SerializeField] private GameObject familiaControlos;
     [SerializeField] private CameraOrbit scriptCamara;
     [SerializeField] private Player scriptPlayer;
 
@@ -30,7 +31,7 @@ public class PauseMenu : MonoBehaviour
 
         controls.Player.Pause.performed += ctx =>
         {
-            if (painelControlos.activeSelf)
+            if (familiaControlos.activeSelf)
             {
                 AbrirPausa();
                 return;
@@ -39,10 +40,35 @@ public class PauseMenu : MonoBehaviour
             if (pausado) Retomar();
             else Pausar();
         };
+
+        controls.Player.Voltar.performed += ctx =>
+        {
+            if (familiaControlos.activeSelf)
+            {
+                AbrirPausa();
+                return;
+            }
+            else Retomar();
+        };
+
+        controls.Player.Jump.performed += ctx =>
+        {
+            if (painelComando.activeSelf)
+            {
+                AbrirControlos();
+                return;
+            }
+            if (painelControlos.activeSelf)
+            {
+                MostrarComando();
+                return;
+            }
+        };
     }
 
     void Start()
     {
+        familiaControlos.SetActive(false);
         painelPausa.SetActive(false);
         painelControlos.SetActive(false);
         painelComando.SetActive(false);
@@ -73,6 +99,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Retomar()
     {
+
+        familiaControlos.SetActive(false);
+        painelComando.SetActive(false);
         painelPausa.SetActive(false);
         painelControlos.SetActive(false);
         Time.timeScale = 1f;
@@ -90,6 +119,7 @@ public class PauseMenu : MonoBehaviour
 
     public void AbrirControlos()
     {
+        familiaControlos.SetActive(true);
         painelPausa.SetActive(false);
         painelControlos.SetActive(true);
         painelComando.SetActive(false);
@@ -98,6 +128,8 @@ public class PauseMenu : MonoBehaviour
 
     private void AbrirPausa()
     {
+        painelComando.SetActive(true);
+        familiaControlos.SetActive(false);
         painelControlos.SetActive(false);
         painelPausa.SetActive(true);
         EventSystem.current.SetSelectedGameObject(primeiroBotaoPausa);
@@ -109,15 +141,13 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void MostrarTeclado()
-    {
-        painelControlos.SetActive(true);
-        painelComando.SetActive(false);
-    }
-
     public void MostrarComando()
     {
+        familiaControlos.SetActive(true);
         painelControlos.SetActive(false);
         painelComando.SetActive(true);
+        painelPausa.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(primeiroBotaoControlos);
     }
+
 }
