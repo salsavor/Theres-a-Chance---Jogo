@@ -101,7 +101,7 @@ public class VidaPlayer : MonoBehaviour
             // ainda tem vidas → volta ao checkpoint do desafio
             if (checkpointDesafio == null)
             {
-                Debug.LogWarning("Checkpoint do desafio nao definido. Teletransportando para o respawn inicial.");
+                Debug.Log("Checkpoint do desafio nao definido. Teletransportando para o respawn inicial.");
                 Teletransportar(respawnInicial);
             }
             else

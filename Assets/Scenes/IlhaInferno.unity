@@ -6388,14 +6388,14 @@ MonoBehaviour:
   painelControlos: {fileID: 977519}
   painelComando: {fileID: 1029574078}
   familiaControlos: {fileID: 302899722}
-  scriptCamara: {fileID: 0}
-  scriptPlayer: {fileID: 0}
+  scriptCamara: {fileID: 1082326398}
+  scriptPlayer: {fileID: 91635627}
   primeiroBotaoPausa: {fileID: 1623008677}
   primeiroBotaoControlos: {fileID: 977519}
   somNormalSnapshot: {fileID: 24500006, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   somPausaSnapshot: {fileID: -2635682645905160871, guid: a74396576d73d4d42b1c88c2e1a268e2, type: 2}
   tempoTransicaoSom: 0.15
-  playerAudioSource: {fileID: 0}
+  playerAudioSource: {fileID: 91635630}
 --- !u!4 &240598849
 Transform:
   m_ObjectHideFlags: 0
@@ -12533,7 +12533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ilha Magica
+  m_text: Ilha Infernal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5aee0956610eac14fb1dd7665bca9e63, type: 2}
   m_sharedMaterial: {fileID: -3475036276950791643, guid: 5aee0956610eac14fb1dd7665bca9e63, type: 2}
@@ -20500,11 +20500,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 877560817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 848}
+  m_AnchoredPosition: {x: 0, y: 308}
   m_SizeDelta: {x: 1100.562, y: 116.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858760907
@@ -21307,6 +21307,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 858760906}
+  - {fileID: 1330296501}
   - {fileID: 1252352054}
   - {fileID: 1428502424}
   - {fileID: 1695779845}
@@ -32973,11 +32975,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 877560817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960.0095, y: 848}
+  m_AnchoredPosition: {x: 0.009521484, y: 308}
   m_SizeDelta: {x: 1100.6, y: 116.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330296502
@@ -68265,7 +68267,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a0cbb5368724da3438a65b9841c8b438, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 410a63f449962d845b53a19e71b73abe, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &7883856721519267076
 Transform:
@@ -70526,5 +70528,3 @@ SceneRoots:
   - {fileID: 1786059395}
   - {fileID: 240598849}
   - {fileID: 877560817}
-  - {fileID: 1330296501}
-  - {fileID: 858760906}
